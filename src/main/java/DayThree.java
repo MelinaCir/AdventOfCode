@@ -13,8 +13,7 @@ public class DayThree {
     private int position = 0;
     private int counter = 0;
 
-    public void solveDayThree()
-    {
+    public void solveDayThree() {
         double treeCounterR1D1 = readSlope(1, 0);
         double treeCounterR3D1 = readSlope(3, 0);
         double treeCounterR5D1 = readSlope(5, 0);
@@ -31,33 +30,27 @@ public class DayThree {
                 treeCounterR7D1 * treeCounterR1D2);
     }
 
-    private int readSlope(final int increase, final int row)
-    {
+    private int readSlope(final int increase, final int row) {
         File file = new File("src/main/resources/trajectory.txt");
         counter = 0;
         position = 0;
 
-        try
-        {
+        try {
             Scanner scanner = new Scanner(file);
 
             int lineWidth = scanner.nextLine().length(); // first line
 
-            while (scanner.hasNext())
-            {
+            while (scanner.hasNext()) {
                 position = position + increase;
 
-                if (row > 0) // For instances where the move is down two.
-                {
+                if (row > 0) { // For instances where the move is down two.
                     scanner.nextLine();
                 }
 
-                if (position < lineWidth)
-                {
+                if (position < lineWidth) {
                     checkForTree(scanner);
                 }
-                else
-                {
+                else {
                     position = position - 31;
 
                     checkForTree(scanner);
@@ -65,20 +58,17 @@ public class DayThree {
             }
             scanner.close();
         }
-        catch (FileNotFoundException e)
-        {
+        catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
 
         return counter;
     }
 
-    private void checkForTree(Scanner scanner)
-    {
+    private void checkForTree(Scanner scanner) {
         String currentLine = scanner.nextLine();
 
-        if (currentLine.charAt(position) == '#')
-        {
+        if (currentLine.charAt(position) == '#') {
             counter++;
         }
     }

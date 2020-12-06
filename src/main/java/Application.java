@@ -18,6 +18,6 @@ public class Application {
         dayFive.run("/seats.txt");
 
 //        DaySix daySix = new DaySix();
-//        daySix.run("/sixInput.txt");
+//        daySix.run("/declarations.txt");
     }
 }

@@ -12,6 +12,12 @@ public class Application {
 //        new DayOne().solveDayOne();
 //        new DayTwo().solveDayTwo();
 //        new DayThree().solveDayThree();
-        new DayFour().solveDayFour();
+//        new DayFour().solveDayFour();
+
+        DayFive dayFive = new DayFive();
+        dayFive.run("/seats.txt");
+
+//        DaySix daySix = new DaySix();
+//        daySix.run("/sixInput.txt");
     }
 }

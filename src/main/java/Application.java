@@ -7,17 +7,22 @@
  */
 public class Application {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 //        new DayOne().solveDayOne();
 //        new DayTwo().solveDayTwo();
 //        new DayThree().solveDayThree();
 //        new DayFour().solveDayFour();
+//
+//        FourthDecember fourthDecember = new FourthDecember();
+//        fourthDecember.run("/passports.txt");
 
-        DayFive dayFive = new DayFive();
-        dayFive.run("/seats.txt");
+//        DayFive dayFive = new DayFive();
+//        dayFive.run("/seats.txt");
 
 //        DaySix daySix = new DaySix();
 //        daySix.run("/declarations.txt");
+
+        DaySeven daySeven = new DaySeven();
+        daySeven.run("/bagcolors.txt");
     }
 }

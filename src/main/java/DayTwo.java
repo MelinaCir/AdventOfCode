@@ -18,17 +18,14 @@ public class DayTwo {
     private int validCounter = 0;
     private int validCounterTwo = 0;
 
-    public void solveDayTwo()
-    {
+    public void solveDayTwo() {
         File file = new File("src/main/resources/passwords.txt");
 
-        try
-        {
+        try {
             Scanner scanner = new Scanner(file);
             readPasswords(scanner);
         }
-        catch (FileNotFoundException e)
-        {
+        catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
 
@@ -37,10 +34,8 @@ public class DayTwo {
         System.out.println("Number of valid passwords according to second puzzle policy: " + validCounterTwo);
     }
 
-    private void readPasswords(final Scanner scanner)
-    {
-        while (scanner.hasNext())
-        {
+    private void readPasswords(final Scanner scanner) {
+        while (scanner.hasNext()) {
             String minMax = scanner.next(); // The first two numbers.
             String letter = scanner.next(); // The letter that is needed.
             String password = scanner.nextLine(); // The given password.
@@ -51,8 +46,7 @@ public class DayTwo {
         }
     }
 
-    private void formatInputs(final String minMax, final String letter, String password)
-    {
+    private void formatInputs(final String minMax, final String letter, String password) {
         String[] minMaxValue = minMax.split("-", 2);
 
         firstValue = Integer.parseInt(minMaxValue[0]);
@@ -63,49 +57,40 @@ public class DayTwo {
         passwordChars = new ArrayList<Character>();
         password = password.replaceAll("\\s", "");
 
-        for (int i = 0; i < password.length(); i++)
-        {
+        for (int i = 0; i < password.length(); i++) {
             passwordChars.add(password.charAt(i));
         }
     }
 
-    private void checkPassword()
-    {
+    private void checkPassword() {
         int counter = 0;
 
-        for (char character : passwordChars)
-        {
-            if (character == letterToTest)
-            {
+        for (char character : passwordChars) {
+            if (character == letterToTest) {
                 counter++;
             }
         }
 
-        if (counter >= firstValue && counter <= secondValue)
-        {
+        if (counter >= firstValue && counter <= secondValue) {
             validCounter++;
         }
     }
 
-    private void checkPasswordAgain()
-    {
+    private void checkPasswordAgain() {
         int occurrences = 0;
 
         if (passwordChars.size() >= secondValue) {
 
-            if (letterToTest == passwordChars.get(firstValue - 1))
-            {
+            if (letterToTest == passwordChars.get(firstValue - 1)) {
                 occurrences++;
             }
 
-            if (letterToTest == passwordChars.get(secondValue - 1))
-            {
+            if (letterToTest == passwordChars.get(secondValue - 1)) {
                 occurrences++;
             }
         }
 
-        if (occurrences == 1)
-        {
+        if (occurrences == 1) {
             validCounterTwo++;
         }
     }

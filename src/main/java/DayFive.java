@@ -14,14 +14,16 @@ public class DayFive extends December {
     private List<Integer> columns = new ArrayList<>();
     final List<Integer> seatIds = new ArrayList<>();
 
-    void setUp(String inputfile) {
+    void setUp(String inputFile) {
         try {
-            final BufferedReader reader = new BufferedReader(new InputStreamReader(ClassReader.class.getResourceAsStream(inputfile)));
+            final BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(ClassReader.class.getResourceAsStream(inputFile)));
             String line;
             while ((line = reader.readLine()) != null) {
                 boardingPasses.add(line);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("Could not load file..");
         }
     }
@@ -44,13 +46,15 @@ public class DayFive extends December {
         for (char aChar : chars) {
             if (aChar == 'F') {
                 rows = rows.subList(0, rows.size() / 2);
-            } else {
+            }
+            else {
                 rows = rows.subList(rows.size() / 2, rows.size());
             }
         }
         if (rows.size() == 1) {
             return rows.get(0);
-        } else {
+        }
+        else {
             return 0;
         }
     }
@@ -62,13 +66,15 @@ public class DayFive extends December {
         for (char aChar : chars) {
             if (aChar == 'L') {
                 columns = columns.subList(0, columns.size() / 2);
-            } else {
+            }
+            else {
                 columns = columns.subList(columns.size() / 2, columns.size());
             }
         }
         if (columns.size() == 1) {
             return columns.get(0);
-        } else {
+        }
+        else {
             return 0;
         }
     }

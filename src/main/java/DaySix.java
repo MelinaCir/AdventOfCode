@@ -12,23 +12,18 @@ public class DaySix extends December {
 
     List<String> declarationForms = new ArrayList<>();
 
-    void setUp(String inputfile)
-    {
-        try
-        {
+    void setUp(String inputfile) {
+        try {
             final BufferedReader reader =
                     new BufferedReader(new InputStreamReader(ClassReader.class.getResourceAsStream(inputfile)));
             String line;
             StringBuilder stringBuilder = new StringBuilder();
 
-            while ((line = reader.readLine()) != null)
-            {
-                if (!line.equals(""))
-                {
+            while ((line = reader.readLine()) != null) {
+                if (!line.equals("")) {
                     stringBuilder.append(line).append(" ");
                 }
-                else
-                {
+                else {
                     declarationForms.add(stringBuilder.toString());
                     stringBuilder = new StringBuilder();
                 }
@@ -36,25 +31,20 @@ public class DaySix extends December {
             declarationForms.add(stringBuilder.toString());
 
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             System.out.println("Could not load file..");
         }
     }
 
-    void part1()
-    {
+    void part1() {
         int counter = 0;
-        for (String form : declarationForms)
-        {
+        for (String form : declarationForms) {
             Set<Character> yesAnswers = new HashSet<>();
 
             char[] chars = form.toCharArray();
 
-            for (char yes : chars)
-            {
-                if (yes != ' ')
-                {
+            for (char yes : chars) {
+                if (yes != ' ') {
                     yesAnswers.add(yes);
                 }
             }
@@ -64,45 +54,39 @@ public class DaySix extends December {
         System.out.println("Number of total 'yes': " + counter);
     }
 
-    void part2()
-    {
+    void part2() {
         int counter = 0;
-        for (String form: declarationForms) {
+        for (String form : declarationForms) {
             counter += countValidYes(form);
         }
 
         System.out.println("Number of total 'yes' part2: " + counter);
     }
 
-    private int countValidYes(String f)
-    {
+    private int countValidYes(String f) {
         String[] group = f.split(" ");
         int yesCounter = 0;
 
-        if (group.length == 1)
-        {
+        if (group.length == 1) {
             return group[0].length();
         }
-        else
-        {
+        else {
             String firstPerson = group[0];
 
             char[] chars = firstPerson.toCharArray(); // f
 
-            for (char c : chars)
-            {
+            for (char c : chars) {
                 int counter = 0;
-                for (int i = 0; i < group.length; i++)
-                {
+
+                for (int i = 0; i < group.length; i++) {
                     char[] nextAnswers = group[i].toCharArray();
 
-                    for (char y: nextAnswers) {
+                    for (char y : nextAnswers) {
                         if (y == c) {
                             counter++;
                             break;
                         }
                     }
-
                 }
                 if (counter == group.length) {
                     yesCounter++;

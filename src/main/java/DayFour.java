@@ -21,18 +21,15 @@ public class DayFour {
     private int trulyValidPassports = 0;
 
 
-    public void solveDayFour()
-    {
+    public void solveDayFour() {
         File file = new File("src/main/resources/passports.txt");
 
-        try
-        {
+        try {
             Scanner scanner = new Scanner(file);
             readPassports(scanner);
 
         }
-        catch (FileNotFoundException e)
-        {
+        catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
 
@@ -43,70 +40,60 @@ public class DayFour {
 
     }
 
-    private void readPassports(final Scanner scanner)
-    {
-        while (scanner.hasNext())
-        {
+    private void readPassports(final Scanner scanner) {
+        while (scanner.hasNext()) {
             String line = scanner.nextLine();
 
             passports.add(line);
         }
 
-        for (String string : passports)
-        {
-//            if (!string.isBlank())
-//            {
-//                String[] fields = string.split("\\s+");
-//
-//                for (String field : fields)
-//                {
-//                    passportFields.add(field);
-//
-//                    String [] test = field.split(":");
-//
-//                    allFields.put(test[0], test[1]);
-//
-//                    System.out.println(allFields.keySet());
-//                }
-//            }
-//            else
-//            {
-//                passportCounter++;
-//                checkPassport();
-//                passportFields.clear();
-//                allFields.clear();
-//            }
+        for (String string : passports) {
+            if (!string.equals(" ")) {
+                String[] fields = string.split("\\s+");
+
+                for (String field : fields) {
+                    passportFields.add(field);
+
+                    String[] test = field.split(":");
+
+                    allFields.put(test[0], test[1]);
+
+                    System.out.println(allFields.keySet());
+                }
+            }
+            else {
+                passportCounter++;
+                checkPassport();
+                passportFields.clear();
+                allFields.clear();
+            }
             //TODO : Since the check is for a blank line, it is skipping the last passport unless another blank line
             // and input is added.
         }
 
     }
 
-    private void checkPassport()
-    {
+    private void checkPassport() {
         boolean cid = false;
 
         if (allFields.keySet().size() == 8) // Sets passport to valid if eight fields are present.
         {
             validPassports++;
         }
-        else if (allFields.keySet().size() == 7)
-        {
+        else if (allFields.keySet().size() == 7) {
 
             System.out.println(allFields.get("cid"));
 
             if (allFields.containsKey("cid")) {
                 System.out.println("Cid exists!");
             }
-            for (String field : passportFields)
-            {
+            for (String field : passportFields) {
                 if (field.startsWith("cid")) // Checks if "cid" exists.
                 {
                     cid = true;
                 }
             }
-            if (!cid)
-            {
+            if (!cid) {
                 validPassports++; // Sets passport to valid if "cid" was the only field missing.
             }
         }
@@ -120,11 +107,9 @@ public class DayFour {
     //ecl (Eye Color)
     //pid (Passport ID)
     //cid (Country ID)
-    private void checkPassportFields()
-    {
+    private void checkPassportFields() {
 
-        for (String field: passportFields)
-        {
+        for (String field : passportFields) {
             String[] values = field.split(":");
             if (field.startsWith("byr")) {
 

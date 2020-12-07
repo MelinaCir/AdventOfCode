@@ -10,6 +10,7 @@ public class DaySeven extends December {
     List<String> bagRules = new ArrayList<>();
     List<String> bagsWithGold = new ArrayList<>();
     Set<String> validBagColors = new HashSet<>();
+    private int bagCounter = 0;
 
     void setUp(String inputFile) {
         try {
@@ -57,5 +58,41 @@ public class DaySeven extends December {
 
     void part2() {
 
+        findBags("shiny gold", 1);
+
+        System.out.println("Number of bags inside shiny gold: " + bagCounter);
+    }
+
+    private void findBags(String color, int parent) {
+
+        for (String rule : bagRules) {
+
+            if (rule.startsWith(color)) {
+                countBags(rule, parent);
+                break;
+            }
+        }
+    }
+
+
+    private void countBags(String rule, int parent) {
+
+        String[] rules = rule.split("\\s*contain\\s*|\\s*bag,\\s*|\\s*bags,\\s*|\\s*bag\\.\\s*|\\s*bags\\.\\s*");
+
+        for (int i = 1; i < rules.length; i++) {
+
+            String nextBag = rules[i];
+            try {
+                int numberOfBags = Integer.parseInt(nextBag.substring(0, 1));
+                int totalBags = numberOfBags * parent;
+
+                bagCounter += totalBags; // 9
+
+                findBags(nextBag.substring(2), totalBags);
+            }
+            catch (NumberFormatException ignored) {
+            }
+
+        }
     }
 }

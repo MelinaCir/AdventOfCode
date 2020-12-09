@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/**
+ * Class DaySeven solves the luggage puzzles of day seven.
+ *
+ * @author MelinaCir
+ * @version 0.1
+ */
 public class DaySeven extends December {
 
     List<String> bagRules = new ArrayList<>();
@@ -86,7 +92,7 @@ public class DaySeven extends December {
                 int numberOfBags = Integer.parseInt(nextBag.substring(0, 1));
                 int totalBags = numberOfBags * parent;
 
-                bagCounter += totalBags; // 9
+                bagCounter += totalBags;
 
                 findBags(nextBag.substring(2), totalBags);
             }

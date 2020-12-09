@@ -11,8 +11,7 @@ public class Application {
 //        new DayOne().solveDayOne();
 //        new DayTwo().solveDayTwo();
 //        new DayThree().solveDayThree();
-//        new DayFour().solveDayFour();
-//
+
 //        FourthDecember fourthDecember = new FourthDecember();
 //        fourthDecember.run("/passports.txt");
 

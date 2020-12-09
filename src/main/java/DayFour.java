@@ -56,6 +56,10 @@ public class DayFour {
 
                     String[] test = field.split(":");
 
+                    for (String hej: test
+                         ) {
+
+                    }
                     allFields.put(test[0], test[1]);
 
                     System.out.println(allFields.keySet());

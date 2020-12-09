@@ -24,7 +24,10 @@ public class Application {
 //        DaySeven daySeven = new DaySeven();
 //        daySeven.run("/bagcolors.txt");
 
-        DayEight dayEight = new DayEight();
-        dayEight.run("/instructions.txt");
+//        DayEight dayEight = new DayEight();
+//        dayEight.run("/instructions.txt");
+
+        DayNine dayNine = new DayNine();
+        dayNine.run("/encoding.txt");
     }
 }

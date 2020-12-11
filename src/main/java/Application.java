@@ -27,7 +27,10 @@ public class Application {
 //        DayEight dayEight = new DayEight();
 //        dayEight.run("/instructions.txt");
 
-        DayNine dayNine = new DayNine();
-        dayNine.run("/encoding.txt");
+//        DayNine dayNine = new DayNine();
+//        dayNine.run("/encoding.txt");
+
+        DayTen dayTen = new DayTen();
+        dayTen.run("/adapters.txt");
     }
 }
